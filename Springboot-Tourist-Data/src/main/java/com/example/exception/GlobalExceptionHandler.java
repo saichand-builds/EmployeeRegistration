@@ -29,8 +29,24 @@ public class GlobalExceptionHandler {
 	}
 	@ExceptionHandler(NoSuchElementException.class)
 	public ResponseEntity<?> TouistNotFoundException(NoSuchElementException ex){
-		return ResponseEntity.status(HttpStatus.NO_CONTENT)
-				.body("No data bound");
+		return ResponseEntity.status(HttpStatus.NOT_FOUND)
+				.body(ex.getMessage());
 	}
+	
+	
+	/*
+	 * Service Layer 
+	 * ↓ 
+	 * throw new NoSuchElementException("Tourist not found 5") 
+	 * ↓
+	 * Global Exception Handler
+	 * 
+	 *  catches it 
+	 *  ↓
+	 *   ex.getMessage() 
+	 *   ↓
+	 * "Tourist not found 5"
+	 */
+
 }
 
