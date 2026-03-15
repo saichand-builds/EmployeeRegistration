@@ -11,6 +11,8 @@ import com.example.SpringbootRequestParamApplication;
 import com.example.Model.Apiresponse;
 import com.example.Model.House;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/house")
 public class HouseController {
@@ -24,11 +26,25 @@ public class HouseController {
 
 	@GetMapping("/register")
 	public ResponseEntity<String> registerHouse(
-			@RequestParam("id") Integer DrNno,
-			@RequestParam("name") String Name) {
-		String message = "Request Paramater";
-		return new ResponseEntity<String>(message, HttpStatus.OK);
-
+			
+			@RequestParam("id") Integer drNno,
+			@RequestParam(required = false) String name) {
+		String Message;
+		
+		/*
+		 * if(name == null) { Message="@true"; return new
+		 * ResponseEntity<String>(Message, HttpStatus.OK); } else { Message=
+		 * "@false"; return new ResponseEntity<String>(Message, HttpStatus.OK);
+		 * 
+		 * }
+		 */
+		if(name.equalsIgnoreCase("admin")) {
+			Message="Request parameter";
+		}
+		else {
+			Message ="Else part";
+		}
+		return new ResponseEntity<String>(Message, HttpStatus.OK);
 	}
 	// http://localhost:8080/Springboot-RequestParam/house/register?id=12&name=saichand
 

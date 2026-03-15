@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class House implements Serializable {
 
-	private Integer DrNno;
-	private String Name;
+	private Integer drNno;
+	private String name;
 	private double cost;
 	private Integer no;
 	 private House message;
